@@ -23,7 +23,7 @@ class Card
         end
     end
 
-    def ==(num)
-        self.value == num.value
+    def ==(card2)
+        self.value == card2.value
     end
 end
