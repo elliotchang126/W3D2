@@ -19,10 +19,6 @@ class Board
         @board[row][col] = value
     end
 
-    def guess
-        #guessed_pos =
-    end
-
     def populate
         alpha = ("A".."Z").to_a
         short_alpha = (alpha[0]...alpha[@num_pairs]).to_a
@@ -38,7 +34,7 @@ class Board
         @board.each_with_index do |row, i|
             row.each_with_index do |ele, i2|
                 samp = @cards[0]
-                @board[i][i2] = samp.value
+                @board[i][i2] = samp
                 @cards.shift
             end
         end
@@ -46,9 +42,22 @@ class Board
     end
 
     def render 
+        rend = @board.map do |row|
+                row.map do |card|
+                if card.face_up == true
+                    card.value
+                else
+                    "_"
+                end
+            end
+        end
+        rend.each {|row| puts row.join(" ")}
     end
 
     def won?
+        @board.flatten.all? do |card|
+            card.face_up == true
+        end
     end
 
 end
