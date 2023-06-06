@@ -1,10 +1,11 @@
 class Card
 
-   def initialize(num)
-        @value = num
+   def initialize(value)
+        @value = value
         @face_up = false
    end
     
+   attr_reader :value, :face_up
     
     def hide
         @face_up = false
@@ -18,7 +19,7 @@ class Card
         if reveal
             self.value
         else
-            "xxxx"
+            "x"
         end
     end
 
