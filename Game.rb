@@ -6,6 +6,7 @@ class Game
 
     def initialize(num)
         @board = Board.new(num)
+        @board.populate
         @player = HumanPlayer.new
 
     end
@@ -23,13 +24,17 @@ class Game
             @board.render
                 if @board[pos1] == @board[pos2]
                     puts 'it`s a match!'
+                    sleep(2)
                 else
                     @board[pos1].hide
                     @board[pos2].hide
                     puts 'try again'
+                    sleep(2)
                 end
             system("clear")
         end
+        puts 'game over'
+        puts 'you win'
     end
 
 end
